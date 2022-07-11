@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<body>
+		<referenceContainer name="content">
+			<block name="points.cms.block" class="Magento\Cms\Block\Block">
+				<arguments>
+					<argument name="block_id" xsi:type="string">pick-up-points-info</argument>
+				</arguments>
+			</block>
+			<block name="points.index" class="Flat101\PickUpPoints\Block\Index\Index"
+				   template="Flat101_PickUpPoints::index/points.phtml">
+				<arguments>
+					<argument
+							name="view_model"
+							xsi:type="object">Flat101\PickUpPoints\ViewModel\Points
+					</argument>
+				</arguments>
+			</block>
+		</referenceContainer>
+	</body>
+</page>

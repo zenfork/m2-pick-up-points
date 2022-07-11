@@ -1,0 +1,49 @@
+<?php
+/**
+* @var \Flat101\PickUpPoints\Block\Index\PointList $block
+* @var \Flat101\PickUpPoints\ViewModel\Points $viewModel
+*/
+$viewModel = $block->getViewModel();
+if (!$viewModel) {
+    return '';
+}
+?>
+<div class="block block-points-list">
+    <?php
+        $_points = $viewModel->getPoints();
+        $count = count($_points);
+    ?>
+    <?php if ($count > 0) : ?>
+        <div class="table-wrapper points-list">
+            <table class="data table table-points-list recent" id="points-list-table">
+                <caption class="table-caption"><?= $block->escapeHtml(__('Pick Up Point List')) ?></caption>
+                <thead>
+                <tr>
+                    <th scope="col" class="col id"><?= $block->escapeHtml(__('Id')) ?></th>
+                    <th scope="col" class="col name"><?= $block->escapeHtml(__('Name')) ?></th>
+                    <th scope="col" class="col address"><?= $block->escapeHtml(__('Address')) ?></th>
+                    <th scope="col" class="col latitude"><?= $block->escapeHtml(__('Latitude')) ?></th>
+                    <th scope="col" class="col longitude"><?= $block->escapeHtml(__('Longitude')) ?></th>
+                    <th scope="col" class="col location"><?= $block->escapeHtml(__('Location')) ?></th>
+                    <th scope="col" class="col shipping-method"><?= $block->escapeHtml(__('Shipping method')) ?></th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($_points as $_point) : ?>
+                    <tr>
+                        <td data-th="<?= $block->escapeHtml(__('Id')) ?>" class="col id"><?= $block->escapeHtml($_point->getId()) ?></td>
+                        <td data-th="<?= $block->escapeHtml(__('Name')) ?>" class="col name"><?= $block->escapeHtml($_point->getName()) ?></td>
+                        <td data-th="<?= $block->escapeHtml(__('Address')) ?>" class="col address"><?= $block->escapeHtml($_point->getAddress()) ?></td>
+                        <td data-th="<?= $block->escapeHtml(__('Latitude')) ?>" class="col latitude"><?= $block->escapeHtml($_point->getLatitude()) ?></td>
+                        <td data-th="<?= $block->escapeHtml(__('Longitude')) ?>" class="col longitude"><?= $block->escapeHtml($_point->getLongitude()) ?></td>
+                        <td data-th="<?= $block->escapeHtml(__('Location')) ?>" class="col location"><?= $block->escapeHtml($_point->getLocation()) ?></td>
+                        <td data-th="<?= $block->escapeHtml(__('Shipping method')) ?>" class="col shipping-method"><?= $block->escapeHtml($viewModel->findMethodNameByMethodCode($_point->getShippingMethod())) ?></td>
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    <?php else : ?>
+        <div class="message info empty"><span><?= $block->escapeHtml(__('No pick up points.')) ?></span></div>
+    <?php endif; ?>
+</div>

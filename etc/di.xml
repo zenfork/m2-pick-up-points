@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Flat101\PickUpPoints\Api\PointRepositoryInterface" type="Flat101\PickUpPoints\Model\PointRepository"/>
+	<preference for="Flat101\PickUpPoints\Api\Data\PointInterface" type="Flat101\PickUpPoints\Model\Point"/>
+	<preference for="Flat101\PickUpPoints\Api\Data\PointSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Flat101\PickUpPoints\Model\ResourceModel\Point\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">flat101_pickuppoints_points</argument>
+			<argument name="resourceModel" xsi:type="string">Flat101\PickUpPoints\Model\ResourceModel\Point\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="flat101_pickuppoints_points_listing_data_source" xsi:type="string">Flat101\PickUpPoints\Model\ResourceModel\Point\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+</config>

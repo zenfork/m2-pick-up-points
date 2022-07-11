@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Flat101::top_level" title="Flat101" module="Flat101_PickUpPoints" sortOrder="9999" resource="Magento_Backend::content"/>
+		<add id="Flat101_PickUpPoints::flat101_pickuppoints_points" title="Pick Up Points" module="Flat101_PickUpPoints" sortOrder="9999" resource="Magento_Backend::content" parent="Flat101::top_level" action="flat101_pickuppoints/points/index"/>
+	</menu>
+</config>

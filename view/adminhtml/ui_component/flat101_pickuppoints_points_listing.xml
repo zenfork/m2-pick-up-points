@@ -1,0 +1,161 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">flat101_pickuppoints_points_listing.flat101_pickuppoints_points_listing_data_source</item>
+		</item>
+	</argument>
+	<settings>
+		<spinner>flat101_pickuppoints_points_columns</spinner>
+		<deps>
+			<dep>flat101_pickuppoints_points_listing.flat101_pickuppoints_points_listing_data_source</dep>
+		</deps>
+		<buttons>
+			<button name="add">
+				<url path="*/*/new"/>
+				<class>primary</class>
+				<label translate="true">Add New Point</label>
+			</button>
+		</buttons>
+	</settings>
+	<dataSource name="flat101_pickuppoints_points_listing_data_source" component="Magento_Ui/js/grid/provider">
+		<settings>
+			<storageConfig>
+				<param name="indexField" xsi:type="string">point_id</param>
+			</storageConfig>
+			<updateUrl path="mui/index/render"/>
+		</settings>
+		<aclResource>Flat101_PickUpPoints::Points</aclResource>
+		<dataProvider name="flat101_pickuppoints_points_listing_data_source" class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+			<settings>
+				<requestFieldName>id</requestFieldName>
+				<primaryFieldName>point_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<listingToolbar name="listing_top">
+		<settings>
+			<sticky>true</sticky>
+		</settings>
+		<bookmark name="bookmarks"/>
+		<columnsControls name="columns_controls"/>
+		<filters name="listing_filters"/>
+		<paging name="listing_paging"/>
+	</listingToolbar>
+	<columns name="flat101_pickuppoints_points_columns">
+		<settings>
+			<editorConfig>
+				<param name="selectProvider" xsi:type="string">flat101_pickuppoints_points_listing.flat101_pickuppoints_points_listing.flat101_pickuppoints_points_columns.ids</param>
+				<param name="enabled" xsi:type="boolean">true</param>
+				<param name="indexField" xsi:type="string">point_id</param>
+				<param name="clientConfig" xsi:type="array">
+					<item name="saveUrl" xsi:type="url" path="flat101_pickuppoints/Points/inlineEdit"/>
+					<item name="validateBeforeSave" xsi:type="boolean">false</item>
+				</param>
+			</editorConfig>
+			<childDefaults>
+				<param name="fieldAction" xsi:type="array">
+					<item name="provider" xsi:type="string">flat101_pickuppoints_points_listing.flat101_pickuppoints_points_listing.flat101_pickuppoints_points_columns_editor</item>
+					<item name="target" xsi:type="string">startEdit</item>
+					<item name="params" xsi:type="array">
+						<item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+						<item name="1" xsi:type="boolean">true</item>
+					</item>
+				</param>
+			</childDefaults>
+		</settings>
+		<selectionsColumn name="ids">
+			<settings>
+				<indexField>point_id</indexField>
+			</settings>
+		</selectionsColumn>
+		<column name="point_id">
+			<settings>
+				<filter>text</filter>
+				<sorting>asc</sorting>
+				<label translate="true">ID</label>
+			</settings>
+		</column>
+		<column name="name">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Name</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<actionsColumn name="actions" class="Flat101\PickUpPoints\Ui\Component\Listing\Column\PointActions">
+			<settings>
+				<indexField>point_id</indexField>
+				<resizeEnabled>false</resizeEnabled>
+				<resizeDefaultWidth>107</resizeDefaultWidth>
+			</settings>
+		</actionsColumn>
+		<column name="address">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Address</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="latitude">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Latitude</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="longitude">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Longitude</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="location">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Location</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="shipping_method" component="Magento_Ui/js/grid/columns/select">
+			<settings>
+				<options class="Magento\Shipping\Model\Config\Source\Allmethods"/>
+				<filter>select</filter>
+				<label translate="true">Shipping method</label>
+				<editor>
+					<editorType>select</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+				<dataType>select</dataType>
+			</settings>
+		</column>
+	</columns>
+</listing>

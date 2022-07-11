@@ -1,0 +1,22 @@
+{
+    "name": "flat101/module-pickuppoints",
+    "description": "A pick-up point is an entity with a name, address, latitude and longitude, location and associated shipping method stored in Magento 2.",
+    "type": "magento2-module",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Yurii Ihumnov",
+            "email": "yurigum@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Flat101\\PickUpPoints\\": ""
+        }
+    }
+}

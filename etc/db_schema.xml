@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="flat101_pickuppoints_points" resource="default" engine="innodb" comment="flat101_pickuppoints_points Table">
+		<column xsi:type="int" name="point_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="point_id"/>
+		</constraint>
+		<column name="name" nullable="false" xsi:type="varchar" length="255" comment="Name"/>
+		<column name="address" nullable="true" xsi:type="varchar" length="255" comment="Address"/>
+		<column name="latitude" nullable="true" xsi:type="float" scale="6" precision="8" unsigned="false" comment="Latitude"/>
+		<column name="longitude" nullable="true" xsi:type="float" scale="6" precision="8" unsigned="false" comment="Longitude"/>
+		<column name="location" nullable="true" xsi:type="varchar" length="255" comment="Location"/>
+		<column name="shipping_method" nullable="true" xsi:type="varchar" length="120" comment="Shipping method"/>
+	</table>
+</schema>
